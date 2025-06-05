@@ -7,11 +7,11 @@ dotenv.config(); // Load environment variables from .env file
 
 // Create a new PostgreSQL connection pool
 const pool = new pg.Pool({
-  user: process.env.DB_USER,      // PostgreSQL username from .env (e.g., 'postgres')
-  host: process.env.DB_HOST,      // PostgreSQL host from .env (e.g., 'localhost')
-  database: process.env.DB_NAME,  // Database name from .env (e.g., 'tender_intelligence_db')
-  password: process.env.DB_PASSWORD, // PostgreSQL password from .env
-  port: process.env.DB_PORT,      // PostgreSQL port from .env (e.g., 5432)
+  connectionString: process.env.DATABASE_URL,
+  // You might also need to add SSL configuration for Render, depending on your pg version and setup:
+  ssl: {
+    rejectUnauthorized: false // This is often needed for Render connections if SSL is enabled
+  }
 });
 
 // Event listener for successful database connection

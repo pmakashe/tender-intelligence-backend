@@ -8,8 +8,7 @@ const scrapeTenders = async () => {
   console.log('Starting tender scraping (or dummy data addition)...');
   try {
     // Ensure the tenders table exists before attempting to insert data
-    await Tender.createTendersTable(); // This function was exported from Tender.js
-
+   
     // Check if there are any tenders already in the database
     const currentTenders = await Tender.findAll();
 
